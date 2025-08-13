@@ -19,8 +19,8 @@ import Link from "next/link"
 
 export default function AuthPage() {
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-4rem)] py-12">
-        <Tabs defaultValue="login" className="w-[400px]">
+    <div className="flex items-center justify-center min-h-[calc(100vh-4rem)] py-12 px-4">
+        <Tabs defaultValue="login" className="w-full max-w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="login">Ingresar</TabsTrigger>
             <TabsTrigger value="register">Registrarse</TabsTrigger>

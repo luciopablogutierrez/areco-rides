@@ -23,8 +23,8 @@ export default function TripDetailPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
             <Card className="overflow-hidden shadow-lg">
                 <div className="relative h-64 w-full">
                     <Image
@@ -43,7 +43,7 @@ export default function TripDetailPage({ params }: { params: { id: string } }) {
                 <CardContent className="p-6 space-y-6">
                     <div>
                         <h2 className="font-headline text-2xl font-semibold mb-4">Detalles del Viaje</h2>
-                        <div className="grid grid-cols-2 gap-4 text-base">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-base">
                             <div className="flex items-center gap-3"><Clock className="h-5 w-5 text-primary"/><span>Salida a las <strong>{trip.hora} hs</strong></span></div>
                             <div className="flex items-center gap-3"><DollarSign className="h-5 w-5 text-primary"/><span><strong>${trip.precio.toLocaleString('es-AR')}</strong> por asiento</span></div>
                             <div className="flex items-center gap-3"><Users className="h-5 w-5 text-primary"/><span><strong>{trip.asientosDisponibles} de {trip.asientosTotales}</strong> asientos libres</span></div>
