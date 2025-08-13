@@ -15,8 +15,8 @@ export default function ProfilePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-1 space-y-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="w-full lg:w-1/3 flex flex-col gap-8">
           <Card className="shadow-lg">
             <CardHeader className="items-center text-center relative">
               <Link href="/auth" className='absolute top-4 right-4'>
@@ -65,7 +65,7 @@ export default function ProfilePage() {
           </Card>
         </div>
 
-        <div className="md:col-span-2">
+        <div className="w-full lg:w-2/3">
             <h2 className="font-headline text-3xl font-bold mb-4" id="my-trips">Mis Viajes</h2>
             <Tabs defaultValue="driver" className="w-full">
                 <TabsList className="grid w-full grid-cols-2">
