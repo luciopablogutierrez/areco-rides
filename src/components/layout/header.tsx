@@ -21,13 +21,13 @@ export function Header() {
             <Button variant="ghost" asChild>
               <Link href="/create-trip">
                 <PlusCircle className="mr-2 h-4 w-4"/>
-                Post a Trip
+                Publicar Viaje
               </Link>
             </Button>
             <Button variant="ghost" asChild>
               <Link href="/profile#my-trips">
                 <History className="mr-2 h-4 w-4" />
-                My Trips
+                Mis Viajes
               </Link>
             </Button>
           </nav>

@@ -1,86 +1,94 @@
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
-import Link from "next/link"
+'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function AuthPage() {
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [registerEmail, setRegisterEmail] = useState('');
+  const [registerPassword, setRegisterPassword] = useState('');
+  const [forgotPasswordEmail, setForgotPasswordEmail] = useState('');
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Lógica de inicio de sesión
+    console.log('Login', { loginEmail, loginPassword });
+  };
+
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Lógica de registro
+    console.log('Register', { registerEmail, registerPassword });
+  };
+
+  const handleForgotPassword = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Lógica de recuperación de contraseña
+    console.log('Forgot Password', { forgotPasswordEmail });
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-[calc(100vh-4rem)] py-12 px-4">
-        <Tabs defaultValue="login" className="w-full max-w-[400px]">
+    <div className="flex justify-center items-center h-screen">
+      <Tabs defaultValue="login" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="login">Ingresar</TabsTrigger>
-            <TabsTrigger value="register">Registrarse</TabsTrigger>
+          <TabsTrigger value="login">Ingresar</TabsTrigger>
+          <TabsTrigger value="register">Registrarse</TabsTrigger>
         </TabsList>
         <TabsContent value="login">
-            <Card>
+          <Card>
             <CardHeader>
-                <CardTitle className="font-headline">Bienvenido de vuelta</CardTitle>
-                <CardDescription>
-                Ingresa tus datos para acceder a tu cuenta.
-                </CardDescription>
+              <CardTitle>Ingresar</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-                <div className="space-y-2">
-                <Label htmlFor="email-login">Email</Label>
-                <Input id="email-login" type="email" placeholder="tu@email.com" />
+            <CardContent>
+              <form onSubmit={handleLogin}>
+                <div className="grid w-full items-center gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="login-email">Email</Label>
+                    <Input id="login-email" type="email" placeholder="tu@email.com" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="login-password">Contraseña</Label>
+                    <Input id="login-password" type="password" placeholder="Tu contraseña" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
+                  </div>
+                  <Button type="submit" className="w-full">Ingresar</Button>
                 </div>
-                <div className="space-y-2">
-                <Label htmlFor="password-login">Contraseña</Label>
-                <Input id="password-login" type="password" />
+              </form>
+              <div className="mt-4 text-center">
+                  <a href="#" onClick={() => alert('Funcionalidad de recuperar contraseña no implementada')} className="text-sm text-blue-500 hover:underline">
+                    ¿Olvidaste tu contraseña?
+                  </a>
                 </div>
             </CardContent>
-            <CardFooter>
-                <Button className="w-full">Ingresar</Button>
-            </CardFooter>
-            </Card>
+          </Card>
         </TabsContent>
         <TabsContent value="register">
-            <Card>
+          <Card>
             <CardHeader>
-                <CardTitle className="font-headline">Crear una cuenta</CardTitle>
-                <CardDescription>
-                Completa tus datos para unirte a Areco Rides.
-                </CardDescription>
+              <CardTitle>Registrarse</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-                <div className="space-y-2">
-                    <Label htmlFor="name">Nombre completo</Label>
-                    <Input id="name" placeholder="Tu nombre y apellido" />
+            <CardContent>
+              <form onSubmit={handleRegister}>
+                <div className="grid w-full items-center gap-4">
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="register-email">Email</Label>
+                    <Input id="register-email" type="email" placeholder="tu@email.com" value={registerEmail} onChange={(e) => setRegisterEmail(e.target.value)} />
+                  </div>
+                  <div className="flex flex-col space-y-1.5">
+                    <Label htmlFor="register-password">Contraseña</Label>
+                    <Input id="register-password" type="password" placeholder="Tu contraseña" value={registerPassword} onChange={(e) => setRegisterPassword(e.target.value)} />
+                  </div>
+                  <Button type="submit" className="w-full">Registrarse</Button>
                 </div>
-                 <div className="space-y-2">
-                    <Label htmlFor="phone">Teléfono</Label>
-                    <Input id="phone" type="tel" placeholder="1122334455" />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="email-register">Email</Label>
-                    <Input id="email-register" type="email" placeholder="tu@email.com" />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="password-register">Contraseña</Label>
-                    <Input id="password-register" type="password" />
-                </div>
+              </form>
             </CardContent>
-            <CardFooter className="flex-col gap-4">
-                <Button className="w-full">Registrarse</Button>
-                <p className="text-xs text-muted-foreground text-center">Al registrarte, aceptas nuestros <Link href="#" className="underline">Términos y Condiciones</Link>.</p>
-            </CardFooter>
-            </Card>
+          </Card>
         </TabsContent>
-        </Tabs>
+      </Tabs>
     </div>
-  )
+  );
 }
